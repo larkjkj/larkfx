@@ -1,5 +1,5 @@
 #include "regs.h"
-.globl __start, hello
+.globl __gs_chcolor, hello
 
 .data
 	hello:		.asciz "Hello World from assembly \n"
@@ -10,7 +10,7 @@
 
 .text
 
-__start:
+__gs_chcolor:
 	.align 4
 	sync
 	
@@ -20,7 +20,7 @@ __start:
 	dli $t2, G_DISPFB1
 	dli $t3, G_BGCOL
 
-	ori $t0, $zero, GS_PMODE_VALUE
+	ori $t0, $zero, 0x21
 	sd $t0, 0($t5)
 
 	dli $t0, 0
@@ -31,10 +31,10 @@ __start:
 	dli $t0, GS_M_PSMCT16S
 	sd $t0, 0($t2)
 
-	dli $t0, 0
-	lui $t0, %hi(GS_COLOR_VALUE)
-	ori $t0, $t0, %lo(GS_COLOR_VALUE)
-	sd $t0, 0($t3)
+	#lui $t0, %hi(0xFFFFFF)
+	#ori $t0, $t0, %lo(0xFFFFFF)
+	#sd $t0, 0($t3)
+	sd $a0, 0($t3)
 
 	dli $t7, GS_GIFTAG_PLACEHOLDER //giftag
 	dli $t4, GS_REGLIST

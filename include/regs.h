@@ -62,9 +62,10 @@
 
 /* Remember to setup all them correctly
  * with fixed values ! */
+#define VCK_UNITS	0x00
 #define GS_D_640x480	(0x0000000000000000 | \
-			(0x280 << 32) | \
-			(0x1E0 << 44))
+			(0x1E0 << 32) | \
+			(0x280 << 44))
 
 #define GS_D_720x480	(0x0000000000000000 | \
 			(0x2D0 << 32) | \
@@ -80,9 +81,7 @@
 #define GS_M_PSMCT16S	((0x0000000000000000) | \
 			(0x00 / 2048) | \
 			((0x280 / 64) << 9) | \
-			(0x000A << 16) | \
-			(0x00 << 32) | \
-			(0x000 << 45))
+			(0xA << 15))
 
 #define GS_M_PSMZ32	(0x30 << 24)
 #define GS_M_PSMZ24	(0x31 << 24)

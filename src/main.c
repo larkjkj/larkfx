@@ -3,8 +3,17 @@
 #include "funcs.h"
 
 int main() {
-
-	__gs_test(); // Calls a GS function in assembly that 
+	/* In this file we call the function */
 	
+/*	__asm__ inline (
+		"dli $a0, %0 \n"
+	:
+	:"i" (0xffffff)
+	:"$a0");
+*/
+
+	register uint64_t color asm ("$a0") = 0xFF00FF;
+
+	__gs_chcolor();
 	return 0;
 }

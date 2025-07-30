@@ -1,2 +1,1 @@
-extern void __gs_test();
-extern void __print();
+extern void __gs_chcolor();
